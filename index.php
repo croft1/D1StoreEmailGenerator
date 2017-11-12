@@ -29,7 +29,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">+
+              <a class="nav-link" href="#"><!-- WRITE RIGHT SIDE NAV THINGS HERE-->
                 <span class="sr-only">(current)</span>
               </a>
             </li>
@@ -54,7 +54,10 @@
 	
     <form class="form-group " action="index.php" method="post">
 	<div class="card p-5">
-        <label> Customers name: <input class="form-control" type="text" name="name"></label>
+        <label>  <h4>Customers name:</h4> <input class="form-control" type="text" name="name"></label>
+		
+		
+		<label><h4>What did they buy?</h4></label>
         <table class="table">
             <!--<tr>
                 <th>Product</th>
@@ -89,7 +92,7 @@
             </tr>
         </table>
 
-        <br><p>Care Refresh?</p>
+        <h4 class="">Care Refresh?</h4>
 		<div class="row">
 		<div class="col-md-1">
             <label><input class="form-control" type="radio" name="carerefresh" value="yes">Yes</label>
