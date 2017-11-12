@@ -10,11 +10,52 @@
 <head>
     <meta charset="UTF-8">
     <title>D1 Store Email Template Generator</title>
-    <h1>D1 Store Email Template Generator</h1>
-    <p>This web page generates the basic content for our standard customer emails.</p>
-    <form action="index.php" method="post">
-        <p>Name: <input type="text" name="name"></p>
-        <table>
+	
+	<link rel="stylesheet" type="text/css" href="/styles/css/bootstrap.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+	<script src="/styles/jquery-3.2.1.min.js" type="javascript"></script>
+   </head>
+<body>
+ <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">D1 Store Email Template Generator</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">+
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+			<!--
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+			-->
+          </ul>
+        </div>
+      </div>
+    </nav>
+	<div class="container py-5">
+	
+    
+	
+    <form class="form-group " action="index.php" method="post">
+	<div class="card p-5">
+        <label> Customers name: <input class="form-control" type="text" name="name"></label>
+        <table class="table">
             <!--<tr>
                 <th>Product</th>
                 <th>Product</th>
@@ -48,23 +89,54 @@
             </tr>
         </table>
 
-        <br><p>Care Refresh:
-            <input type="radio" name="carerefresh" value="yes">Yes
-            <input type="radio" name="carerefresh" value="no">No
-            </br></p>
-        <p>Care Refresh Code 1: <input type="text" name="carerefreshcode1"><br></p>
-        <p>Care Refresh Code 2: <input type="text" name="carerefreshcode2"><br></p>
-        <p>Care Refresh Code 3: <input type="text" name="carerefreshcode3"><br></p>
-        <input type="submit" >
+        <br><p>Care Refresh?</p>
+		<div class="row">
+		<div class="col-md-1">
+            <label><input class="form-control" type="radio" name="carerefresh" value="yes">Yes</label>
+		</div>
+		<div class="col-md-1">
+            <label><input class="form-control" type="radio" name="carerefresh" value="no" checked="checked">No</label>
+        </div>
+		
+		
+		<!--<div id="c-r-inputs">-->
+			<p>Care Refresh Code 1: <input class="form-control" type="text" name="carerefreshcode1"><br></p>
+			<p>Care Refresh Code 2: <input class="form-control" type="text" name="carerefreshcode2"><br></p>
+			<p>Care Refresh Code 3: <input class="form-control" type="text" name="carerefreshcode3"><br></p>
+<!--        </div>-->
+		<script>
+				$(document).ready(function() {
+			$("input[name$='carerefresh']").click(function() {
+				var test = $(this).val();
+
+				if($test = "yes"){
+					$("#c-r-inputs").show();
+					
+				}else{
+					$("#c-r-inputs").hide();
+					
+				}
+			});
+		});
+		</script>
+		
+		<input  class="btn btn-xl btn-block btn-success" type="submit" value="Generate Email">
+		
+		</div>
+		<hr class="p-2">
+		
         <?php
         //Create basic string
-        $mainString = "Dear " . $_POST["name"] . ",
+		$mainString = '';
+		if(isset($_POST["name"])){
+			$mainString = "Dear " . $_POST["name"] . ",
         
 Congratulations on your purchase!
  
 We hope that you enjoy your new DJI product as much as we do.
  
 Below there’s a link to a video playlist that has all the info you will need to get everything up and running.";
+		}
 
         //Add links
         if(!empty($_POST['check_list'])) {
@@ -165,16 +237,39 @@ http://lounge.d1store.com.au/content/the-dos-and-don-ts-of-drone-flying
 If you require further assistance then please don’t hesitate to send us an email or give us a call.";
 
 
+
+?>
+
+
+
+<script>
+$("#copy").click(function(){
+    $("#generatedOutput").select();
+    document.execCommand('copy');
+	$("#generatedOutput").deselect();
+});
+</script>
+<div class="row">
+<h2 class="col-md-6">GENERATED EMAIL:</h2><div class="col-md-6 btn btn-outline-info" id="copy">COPY TO CLIPBOARD</div>
+</div>
+<?php
         //Output text area
         if(isset($_POST)){
-            echo '<br><textarea rows="30" cols="200" name="comment">' . $mainString . '</textarea></br>';
+            echo '<br><textarea id="generatedOutput" class="form-control" rows="30" name="comment">' . $mainString . '</textarea></br>';
         }
         ?>
     </form>
-    <hr>
-    <p>If any changes are required, please contact Michael or Andrey.</p>
-</head>
-<body>
-
+	
+   
+    
+	</div>
+	
+	
+	 <footer class="">
+      <div class="container">
+        <h3>If any changes are required, please contact Michael or Andrey.</p>
+      </div>
+    </footer>
 </body>
 </html>
+
