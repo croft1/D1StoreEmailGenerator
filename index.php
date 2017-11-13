@@ -17,6 +17,11 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 	<script src="/styles/jquery-3.2.1.min.js" type="javascript"></script>
+
+<!--    NICEDITOR FOR BOLD IN EDITTEXT   --this works but doesnt provide spaces between paragraphs   -->
+<!--<script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>-->
+						
    </head>
 <body>
  <!-- Navigation -->
@@ -241,7 +246,7 @@ Learn more here:";
         }
 
         $drone_only_info = "Find out the Australian rules for drone flight using the CASA official app: Can I Fly There?
-Learn more here: https://www.casa.gov.au/droneapp
+Learn more here: https://www.casa.gov.au/droneapp \n
  
 Take some time to learn more about the dos and don’ts of drone flight with this easy guide: 
 http://lounge.d1store.com.au/content/the-dos-and-don-ts-of-drone-flying
@@ -284,7 +289,7 @@ $("#copy").click(function(){
 	
 	 <footer class="">
       <div class="container">
-        <h3>If any changes are required, please contact Michael or Andrey.</p>
+        <h3>If any changes are required, please contact Michael and Andrey.</h3>
       </div>
     </footer>
 </body>
