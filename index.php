@@ -117,20 +117,21 @@
 					
 				}else{
 					$("#c-r-inputs").hide();
-					
+
 				}
 			});
 		});
 		</script>
-		
+
 		<input  class="btn btn-xl btn-block btn-success" type="submit" value="Generate Email">
-		
+
 		</div>
 		<hr class="p-2">
-		
+
         <?php
         //Create basic string
 		$mainString = '';
+        $drone_in_sale = false;
 		if(isset($_POST["name"])){
 			$mainString = "Dear " . $_POST["name"] . ",
         
@@ -207,31 +208,39 @@ Learn more here:";
 
                 //Add links to care refresh
                 if(!empty($_POST['check_list'])) {
+
+
                     foreach($_POST['check_list'] as $check) {
                         if ($check == "spark"){
                             $mainString = $mainString . "\n" . "https://www.d1store.com.au/products/SPARK-CARE-REFRESH \nhttps://www.d1store.com.au/products/SPARK-CARE-REFRESH-COMBO";
+                            $drone_in_sale = true;
                         }
                         if ($check == "mavicpro") {
                             $mainString = $mainString . "\n" . "https://www.d1store.com.au/products/dji-care-refresh-mavic-pro";
+                            $drone_in_sale = true;
                         }
                         if ($check == "p4a") {
                             $mainString = $mainString . "\n" . "https://www.d1store.com.au/products/dji-care-refresh-phantom-4-advanced";
+                            $drone_in_sale = true;
                         }
                         if ($check == "p4p") {
                             $mainString = $mainString . "\n" . "https://www.d1store.com.au/products/dji-care-refresh-phantom-4-pro";
+                            $drone_in_sale = true;
                         }
                         if ($check == "p4pp") {
                             $mainString = $mainString . "\n" . "https://www.d1store.com.au/products/dji-care-refresh-phantom-4-pro";
+                            $drone_in_sale = true;
                         }
                         if ($check == "inspire2") {
                             $mainString = $mainString . "\n" . "https://www.d1store.com.au/products/dji-care-refresh-inspire-2";
+                            $drone_in_sale = true;
                         }
                     }
                 }
             }
         }
 
-        $mainString = $mainString . "\n\n" . "Find out the Australian rules for drone flight using the CASA official app: Can I Fly There?
+        $drone_only_info = "Find out the Australian rules for drone flight using the CASA official app: Can I Fly There?
 Learn more here: https://www.casa.gov.au/droneapp
  
 Take some time to learn more about the dos and don’ts of drone flight with this easy guide: 
@@ -239,22 +248,27 @@ http://lounge.d1store.com.au/content/the-dos-and-don-ts-of-drone-flying
  
 If you require further assistance then please don’t hesitate to send us an email or give us a call.";
 
+        if($drone_in_sale){
+            $mainString = $mainString . "\n\n" . $drone_only_info;
+        }
+
 
 
 ?>
 
 
 
+
+<div class="row">
+<h2 class="col-md-6">GENERATED EMAIL:</h2><div class="col-md-6 btn btn-outline-info" id="copy">COPY TO CLIPBOARD</div>
+</div>
 <script>
 $("#copy").click(function(){
     $("#generatedOutput").select();
     document.execCommand('copy');
-	$("#generatedOutput").deselect();
+	
 });
 </script>
-<div class="row">
-<h2 class="col-md-6">GENERATED EMAIL:</h2><div class="col-md-6 btn btn-outline-info" id="copy">COPY TO CLIPBOARD</div>
-</div>
 <?php
         //Output text area
         if(isset($_POST)){
