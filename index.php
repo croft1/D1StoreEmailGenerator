@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <style>
     body {background-color: whitesmoke;}
@@ -18,10 +18,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 	<script src="/styles/jquery-3.2.1.min.js" type="javascript"></script>
 
-<!--    NICEDITOR FOR BOLD IN EDITTEXT   --this works but doesnt provide spaces between paragraphs   -->
-<!--<script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
-<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>-->
-						
+<!--    NICEDITOR FOR BOLD IN EDITTEXT      -->
    </head>
 <body>
  <!-- Navigation -->
@@ -152,12 +149,15 @@ Below there’s a link to a video playlist that has all the info you will need t
             foreach($_POST['check_list'] as $check) {
                 if ($check == "spark"){
                     $mainString = $mainString . "\n" . "http://lounge.d1store.com.au/content/dji-spark-tutorial-get-ready-to-fly";
+   $drone_in_sale = true;
                 }
                 if ($check == "mavicpro") {
                     $mainString = $mainString . "\n" . "http://lounge.d1store.com.au/content/dji-mavic-pro-video-guides";
+   $drone_in_sale = true;
                 }
                 if ($check == "p4a" || $check == "p4p" || $check == "p4pp") {
                     $mainString = $mainString . "\n" . "http://lounge.d1store.com.au/content/dji-phantom-4-pro-pro-video-guides";
+   $drone_in_sale = true;
                 }
                 if ($check == "osmo" || $check == "osmoplus") {
                     $mainString = $mainString . "\n" . "http://lounge.d1store.com.au/content/dji-osmo-video-guides";
@@ -173,6 +173,7 @@ Below there’s a link to a video playlist that has all the info you will need t
                 }
                 if ($check == "inspire2") {
                     $mainString = $mainString . "\n" . "http://lounge.d1store.com.au/content/dji-inspire-2-video-guides";
+   $drone_in_sale = true;
                 }
             }
         }
@@ -218,7 +219,7 @@ Learn more here:";
                     foreach($_POST['check_list'] as $check) {
                         if ($check == "spark"){
                             $mainString = $mainString . "\n" . "https://www.d1store.com.au/products/SPARK-CARE-REFRESH \nhttps://www.d1store.com.au/products/SPARK-CARE-REFRESH-COMBO";
-                            $drone_in_sale = true;
+                         
                         }
                         if ($check == "mavicpro") {
                             $mainString = $mainString . "\n" . "https://www.d1store.com.au/products/dji-care-refresh-mavic-pro";
@@ -246,7 +247,7 @@ Learn more here:";
         }
 
         $drone_only_info = "Find out the Australian rules for drone flight using the CASA official app: Can I Fly There?
-Learn more here: https://www.casa.gov.au/droneapp \n
+Learn more here: https://www.casa.gov.au/droneapp
  
 Take some time to learn more about the dos and don’ts of drone flight with this easy guide: 
 http://lounge.d1store.com.au/content/the-dos-and-don-ts-of-drone-flying
